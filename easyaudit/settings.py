@@ -22,7 +22,7 @@ def get_model_list(class_list):
     for idx, item in enumerate(class_list):
         if isinstance(item, (str,)):
             class_list[idx] = apps.get_model(item)
-        elif is_function(item):
+        elif isfunction(item):
             class_list[idx] = item()
 
 
