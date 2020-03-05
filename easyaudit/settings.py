@@ -20,9 +20,13 @@ def get_model_list(class_list):
     it ignores it.
     """
     for idx, item in enumerate(class_list):
+        model_class = None
         if isinstance(item, (str,)):
-            model_class = apps.get_model(item)
-            class_list[idx] = model_class
+            class_list[idx] = apps.get_model(item)
+        elif callable(item):
+            class_list[idx] = item()
+
+
 
 
 # Should Django Easy Audit log model/auth/request events?
